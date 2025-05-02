@@ -1,85 +1,150 @@
 body {
-  font-family: sans-serif;
-  background-color: aqua;
-}
+    font-family: 'Arial', sans-serif; /* تغییر فونت */
+    background-color: #eef2f7; /* رنگ پس زمینه روشن‌تر */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* تراز بالا */
+    min-height: 100vh;
+  }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-/* .container {
-width: 500px;
-margin: auto;
-} */
+  .container {
+    background-color: #ffffff; /* پس زمینه سفید برای کانتینر */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* اضافه کردن سایه */
+    width: 100%;
+    max-width: 700px; /* حداکثر عرض */
+  }
 
-#notes-container{
-    display:flex;
-    flex-wrap: wrap;
-    gap:10px;
-    margin-bottom: 20px;
-}
+  h1 {
+    text-align: center;
+    color: #333; /* رنگ تیره‌تر برای عنوان */
+    margin-bottom: 30px;
+    font-size: 2em;
+  }
 
-.note {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    width: 250px;
-    min-height: 100px;
+  #notes-container {
+    display: grid; /* استفاده از گرید برای چیدمان بهتر */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* ستون‌های انعطاف‌پذیر */
+    gap: 20px; /* افزایش فاصله بین یادداشت‌ها */
+    margin-bottom: 30px;
+  }
+
+  .note {
+    background-color: #f9f9f9; /* پس زمینه کمی تیره‌تر برای یادداشت‌ها */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd; /* اضافه کردن حاشیه */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+    word-break: break-word; /* اطمینان از شکستن کلمات طولانی */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out; /* انیمیشن کوچک هنگام هاور */
+  }
 
-.note-text {
-    font-size: 16px;
-    overflow-wrap: break-word;
-}
+  .note:hover {
+      transform: translateY(-5px);
+  }
 
-.note-buttons {
+  .note-text {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px; /* فاصله کمتر بین متن و زمان */
+    flex-grow: 1; /* اجازه رشد به متن برای پر کردن فضای موجود */
+  }
+
+  .note-timestamp { /* استایل برای زمان ایجاد */
+      font-size: 0.8em;
+      color: #888;
+      text-align: right;
+      margin-bottom: 15px; /* فاصله بین زمان و دکمه‌ها */
+  }
+
+  .note-buttons {
     display: flex;
     justify-content: flex-end;
-    gap: 5px;
-}
+    gap: 10px; /* افزایش فاصله بین دکمه‌ها */
+  }
 
-#add-note {
+  #add-note {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
+    align-items: stretch; /* کشیدن عناصر به عرض کامل */
+    gap: 15px; /* افزایش فاصله */
+  }
 
-#note-text{
-    resize: none;
-    padding: 10px;
-    border: 1 solid #ccc;
+  #note-text {
+    resize: vertical; /* فقط تغییر اندازه عمودی */
+    padding: 15px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
-    width: 300px;
-}
+    font-size: 1em;
+    width: 100%; /* استفاده از عرض کامل */
+    box-sizing: border-box; /* شامل padding و border در عرض */
+    min-height: 100px; /* حداقل ارتفاع */
+  }
 
-#add-btn{
-    padding: 10px 20px ;
-    background-color: #4CAF50;
+  #add-btn {
+    padding: 12px 25px; /* افزایش اندازه دکمه */
+    background-color: #007bff; /* رنگ آبی جذاب‌تر */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
+    font-size: 1.1em;
+    transition: background-color 0.3s ease; /* انیمیشن تغییر رنگ */
+  }
 
-.edit-btn{
-    background-color: #FFC107;
-    color: white;
+  #add-btn:hover {
+    background-color: #0056b3; /* رنگ تیره‌تر هنگام هاور */
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 8px 15px; /* اندازه مناسب برای دکمه‌های کوچک */
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
     cursor: pointer;
-}
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+  }
 
-.delete-btn{
-    background-color: #F44336;
+  .edit-btn {
+    background-color: #ffc107; /* رنگ زرد */
+    color: #333;
+  }
+
+  .edit-btn:hover {
+    background-color: #e0a800;
+  }
+
+  .delete-btn {
+    background-color: #dc3545; /* رنگ قرمز */
     color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
+  }
+
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+      .container {
+          padding: 20px;
+      }
+
+      h1 {
+          font-size: 1.8em;
+      }
+
+      #notes-container {
+          grid-template-columns: 1fr; /* در صفحات کوچک، یک ستون */
+      }
+
+      .note-buttons {
+          justify-content: center; /* دکمه‌ها وسط چین شوند */
+      }
+  }
